@@ -89,9 +89,9 @@ script:
   # run all feature except @first-run
   - ./vendor/bin/behat -n -fprogress -p $BROWSER --strict --tags="${TAGS}"
 addons:
-  apt:
-    packages:
-      - google-chrome-stable
+  chrome: stable
+before_install:
+  - google-chrome-stable --headless --disable-gpu
 
 after_failure:
   - ls -l build/mails
